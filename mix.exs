@@ -38,7 +38,8 @@ defmodule Heartbeat.MixProject do
   defp deps do
     [
       {:nerves, "~> 1.0", runtime: false},
-      {:shoehorn, "~> 0.2"}
+      {:shoehorn, "~> 0.2"},
+      {:rpi_rgb_led_matrex, git: "https://github.com/verypossible/rpi_rgb_led_matrex"}
     ] ++ deps(@target)
   end
 
