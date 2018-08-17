@@ -56,6 +56,10 @@ defmodule Heartbeat.MixProject do
   defp system("rpi0"), do: [{:nerves_system_rpi0, "~> 1.0", runtime: false}]
   defp system("rpi2"), do: [{:nerves_system_rpi2, "~> 1.0", runtime: false}]
   defp system("rpi3"), do: [{:nerves_system_rpi3, "~> 1.0", runtime: false}]
+
+  defp system("rpi3_sudo"),
+    do: [{:rpi3_sudo, git: "https://github.com/verypossible/rpi3_sudo", runtime: false}]
+
   defp system("bbb"), do: [{:nerves_system_bbb, "~> 1.0", runtime: false}]
   defp system("ev3"), do: [{:nerves_system_ev3, "~> 1.0", runtime: false}]
   defp system("qemu_arm"), do: [{:nerves_system_qemu_arm, "~> 1.0", runtime: false}]
