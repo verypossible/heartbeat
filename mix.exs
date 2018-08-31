@@ -30,7 +30,7 @@ defmodule Heartbeat.MixProject do
   def application do
     [
       mod: {Heartbeat.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :poison, :runtime_tools]
     ]
   end
 
@@ -39,6 +39,7 @@ defmodule Heartbeat.MixProject do
     [
       {:nerves, "~> 1.0", runtime: false},
       {:shoehorn, "~> 0.2"},
+      {:slack, "~> 0.14.0"},
       {:rpi_rgb_led_matrex, git: "https://github.com/verypossible/rpi_rgb_led_matrex"}
     ] ++ deps(@target)
   end
@@ -48,6 +49,7 @@ defmodule Heartbeat.MixProject do
 
   defp deps(target) do
     [
+      {:nerves_network, "~> 0.3.6"},
       {:nerves_runtime, "~> 0.4"}
     ] ++ system(target)
   end

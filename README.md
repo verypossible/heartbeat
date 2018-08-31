@@ -24,11 +24,13 @@ https://hexdocs.pm/nerves/targets.html#content
 ## Getting Started
 
 To start your Nerves app:
-  * `export MIX_TARGET=rpi3_sudo` or prefix every command with
-    `MIX_TARGET=rpi3_sudo`.
+  * Create a .env file:
+    * SLACK_TOKEN="SLACK_TOKEN HERE"
+    * MIX_TARGET="rpi3_sudo"
+  * Set environment with `source .env`
   * Install dependencies with `mix deps.get`
   * Build docker image with `docker build -t compile_image .`
-  * Connect to docker image with `docker run -v $(pwd)/output:/opt/firmware/output --rm -it compile_image bash`
+  * Connect to docker image with `docker run -e SLACK_TOKEN=$SLACK_TOKEN -v $(pwd)/output:/opt/firmware/output --rm -it compile_image bash`
     (The -v option will mount a volume through which we will receive build artifacts from the docker container)
   # Inside of the docker image
   * Build firmware image `mix firmware`

@@ -17,15 +17,15 @@ defmodule Heartbeat.Application do
   # List all child processes to be supervised
   def children("host") do
     [
-      # Starts a worker by calling: Heartbeat.Worker.start_link(arg)
-      # {Heartbeat.Worker, arg},
+      {Heartbeat.Slack.Launcher, []},
+      RpiRgbLedMatrex.Matrix
     ]
   end
 
   def children(_target) do
     [
-      # Starts a worker by calling: Heartbeat.Worker.start_link(arg)
-      # {Heartbeat.Worker, arg},
+      {Heartbeat.Slack.Launcher, []},
+      RpiRgbLedMatrex.Matrix
     ]
   end
 end

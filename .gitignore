@@ -18,3 +18,9 @@ erl_crash.dump
 
 # System files
 .DS_Store
+
+# ENV files
+.env
+
+/output/*
+!.keep

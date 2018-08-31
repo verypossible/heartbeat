@@ -9,11 +9,18 @@ use Mix.Config
 # https://hexdocs.pm/nerves/advanced-configuration.html for details.
 config :nerves, :firmware, rootfs_overlay: "rootfs_overlay"
 
+config :heartbeat, :slack_token, System.get_env("SLACK_TOKEN")
+
+config :nerves_network, :default,
+  eth0: [
+    ipv4_address_method: :dhcp
+  ]
+
 # Use shoehorn to start the main application. See the shoehorn
 # docs for separating out critical OTP applications such as those
 # involved with firmware updates.
 config :shoehorn,
-  init: [:nerves_runtime],
+  init: [:nerves_runtime, :nerves_network],
   app: Mix.Project.config()[:app]
 
 # Import target specific config. This must remain at the bottom

@@ -10,7 +10,7 @@ RUN mix local.hex --force && mix local.rebar && mix archive.install hex nerves_b
 
 WORKDIR /opt/firmware
 
-ENV MIX_TARGET='rpi3_sudo'
+ENV MIX_TARGET="rpi3_sudo"
 
 VOLUME ./output
 

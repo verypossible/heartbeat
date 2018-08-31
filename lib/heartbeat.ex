@@ -1,18 +1,6 @@
 defmodule Heartbeat do
   @moduledoc """
-  Documentation for Heartbeat.
+  `Heartbeat` facilitates communication between Slack and a connected
+  Adafruit RGB LED matrix.
   """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Heartbeat.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end
