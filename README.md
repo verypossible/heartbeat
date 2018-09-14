@@ -1,6 +1,6 @@
 # Heartbeat
 
-A tool for generating visual representations of near real time, digital interactions.
+A tool for generating visual representations of near real time, slack interactions.
 
 ## Requirements
 
@@ -10,6 +10,7 @@ A tool for generating visual representations of near real time, digital interact
     * fwup
     * A microSD card (for burning firmware)
     * A Raspberry Pi 3 model B
+    * An Adafruit LED Matrix panel e.g. https://www.adafruit.com/product/1484
 
 ## Targets
 
@@ -32,11 +33,11 @@ To start your Nerves app:
   * Build docker image with `docker build -t compile_image .`
   * Connect to docker image with `docker run -e SLACK_TOKEN=$SLACK_TOKEN -v $(pwd)/output:/opt/firmware/output --rm -it compile_image bash`
     (The -v option will mount a volume through which we will receive build artifacts from the docker container)
-  # Inside of the docker image
+  ### Inside of the docker image
   * Build firmware image `mix firmware`
   * Copy firmware to mounted volume `cp _build/rpi3_sudo/dev/nerves/images/heartbeat.fw ./output/`
   * Exit docker image with `exit`
-  # Back outside of docker image
+  ### Back outside of docker image
   * Burn firmware to connected microSD card `fwup ./output/heartbeat.fw`
   * Install microSD card into Pi and boot up.
 
