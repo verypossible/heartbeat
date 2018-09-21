@@ -1,4 +1,4 @@
-FROM elixir:1.6.6-otp-21
+FROM elixir:1.7.3
 
 COPY ./ /opt/firmware
 

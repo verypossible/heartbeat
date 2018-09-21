@@ -22,5 +22,11 @@ erl_crash.dump
 # ENV files
 .env
 
+# SSH keys
+.ssh/*
+
+# Build artifacts
 /output/*
+
+# Keep keep files
 !.keep

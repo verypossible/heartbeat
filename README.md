@@ -29,6 +29,7 @@ To start your Nerves app:
     * SLACK_TOKEN="SLACK_TOKEN HERE"
     * MIX_TARGET="rpi3_sudo"
   * Set environment with `source .env`
+  * Create an SSH key: `ssh-keygen -t rsa -b 4096 -C "email@example.com"` (Place key in project directory with name: `.ssh/heartbeat_ssh`)
   * Install dependencies with `mix deps.get`
   * Build docker image with `docker build -t compile_image .`
   * Connect to docker image with `docker run -e SLACK_TOKEN=$SLACK_TOKEN -v $(pwd)/output:/opt/firmware/output --rm -it compile_image bash`
@@ -38,8 +39,8 @@ To start your Nerves app:
   * Copy firmware to mounted volume `cp _build/rpi3_sudo/dev/nerves/images/heartbeat.fw ./output/`
   * Exit docker image with `exit`
   ### Back outside of docker image
-  * Burn firmware to connected microSD card `fwup ./output/heartbeat.fw`
-  * Install microSD card into Pi and boot up.
+  * Use the upload script to copy firmware to the device via SSH: `./upload.sh IP_ADDRESS output/heartbeat.fw .ssh/heartbeat_ssh`
+  * Bonus: Connect to the Pi via SSH: `ssh -i .ssh/heartbeat_ssh IP_ADDRESS`
 
 ## Learn more
 
