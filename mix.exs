@@ -41,7 +41,7 @@ defmodule Heartbeat.MixProject do
       {:nerves, "~> 1.0", runtime: false},
       {:shoehorn, "~> 0.2"},
       {:ring_logger, "~> 0.4"},
-      {:slack, "~> 0.14.0"},
+      {:slack, "~> 0.15.0"},
       {:rpi_rgb_led_matrex, git: "https://github.com/verypossible/rpi_rgb_led_matrex"}
     ] ++ deps(@target)
   end
@@ -52,6 +52,7 @@ defmodule Heartbeat.MixProject do
   defp deps(target) do
     [
       {:nerves_runtime, "~> 0.4"},
+      {:nerves_time, "~> 0.2"},
       {:nerves_init_gadget, "~> 0.4"},
       {:nerves_network, "~> 0.3.6"}
     ] ++ system(target)

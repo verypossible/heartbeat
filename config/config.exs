@@ -19,11 +19,6 @@ config :shoehorn,
   init: [:nerves_runtime, :nerves_init_gadget, :nerves_network],
   app: Mix.Project.config()[:app]
 
-config :nerves_network, :default,
-  eth0: [
-    ipv4_address_method: :dhcp
-  ]
-
 # Use Ringlogger as the logger backend and remove :console.
 # See https://hexdocs.pm/ring_logger/readme.html for more information on
 # configuring ring_logger.
