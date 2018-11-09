@@ -27,8 +27,7 @@ defmodule Heartbeat.Slack.Launcher do
 
   @spec update_time() :: nil
   defp update_time do
-    if DateTime.utc_now().year == 1970 do
-      System.cmd("ntpd", ["-q", "-p", "pool.ntp.org"])
+    if !Nerves.Time.synchronized?() do
       Process.sleep(1000)
       update_time()
     end

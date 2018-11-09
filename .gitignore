@@ -18,6 +18,7 @@ erl_crash.dump
 
 # System files
 .DS_Store
+dump.rdb
 
 # ENV files
 .env
