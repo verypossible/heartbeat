@@ -17,15 +17,17 @@ defmodule Heartbeat.Application do
   # List all child processes to be supervised
   def children("host") do
     [
-      {Heartbeat.Slack.Launcher, []},
-      RpiRgbLedMatrex.Matrix
+      RpiRgbLedMatrex.Matrix,
+      {Heartbeat.PixelManager, {32, 32}},
+      {Heartbeat.Slack.Launcher, []}
     ]
   end
 
   def children(_target) do
     [
-      {Heartbeat.Slack.Launcher, []},
-      RpiRgbLedMatrex.Matrix
+      RpiRgbLedMatrex.Matrix,
+      {Heartbeat.PixelManager, {32, 32}},
+      {Heartbeat.Slack.Launcher, []}
     ]
   end
 end

@@ -39,10 +39,7 @@ defmodule Heartbeat.Pixel do
   @spec flash(pid) :: :ok
   def flash(pid), do: GenServer.cast(pid, :flash)
 
-  # gen_server callbacks
-  def init({x, y} = coords) do
-    IO.inspect(x)
-    IO.inspect(y)
+  def init(coords) do
     state = %State{coords: coords}
     {:ok, state}
   end
@@ -60,7 +57,6 @@ defmodule Heartbeat.Pixel do
   end
 
   def handle_info(:dim, %{intensity: intensity, coords: coords} = state) do
-    IO.inspect(intensity)
     Matrix.set_pixel(Tuple.duplicate(intensity, 3), coords)
     {:noreply, %{state | intensity: dim(intensity)}}
   end

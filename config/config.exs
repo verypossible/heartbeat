@@ -11,12 +11,13 @@ use Mix.Config
 config :nerves, :firmware, rootfs_overlay: "rootfs_overlay"
 
 config :heartbeat, :slack_token, System.get_env("SLACK_TOKEN")
+config :heartbeat, :time_management, Heartbeat.Time
 
 # Use shoehorn to start the main application. See the shoehorn
 # docs for separating out critical OTP applications such as those
 # involved with firmware updates.
 config :shoehorn,
-  init: [:nerves_runtime, :nerves_init_gadget, :nerves_network],
+  init: [:nerves_runtime, :nerves_init_gadget],
   app: Mix.Project.config()[:app]
 
 # Use Ringlogger as the logger backend and remove :console.
@@ -52,4 +53,4 @@ config :nerves_init_gadget,
 # of this file so it overrides the configuration defined above.
 # Uncomment to use target specific configurations
 
-# import_config "#{Mix.Project.config[:target]}.exs"
+import_config "#{Mix.Project.config()[:target]}.exs"

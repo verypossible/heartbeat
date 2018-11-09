@@ -1,4 +1,4 @@
-FROM elixir:1.7.3
+FROM elixir:1.7.4
 
 COPY ./ /opt/firmware
 

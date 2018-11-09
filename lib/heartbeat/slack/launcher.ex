@@ -13,7 +13,7 @@ defmodule Heartbeat.Slack.Launcher do
 
   @spec init(any) :: {:ok, %{rtm_bot_pid: pid}}
   def init(_) do
-    update_time()
+    check_time()
 
     {:ok, pid} =
       Slack.Bot.start_link(
@@ -25,11 +25,15 @@ defmodule Heartbeat.Slack.Launcher do
     {:ok, %{rtm_bot_pid: pid}}
   end
 
-  @spec update_time() :: nil
-  defp update_time do
-    if !Nerves.Time.synchronized?() do
+  @spec check_time() :: nil
+  defp check_time do
+    if !time().synchronized?() do
       Process.sleep(1000)
-      update_time()
+      check_time()
     end
+  end
+
+  defp time do
+    Application.fetch_env!(:heartbeat, :time_management)
   end
 end

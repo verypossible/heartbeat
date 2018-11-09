@@ -38,6 +38,7 @@ defmodule Heartbeat.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:nerves, "~> 1.0", runtime: false},
       {:shoehorn, "~> 0.2"},
       {:ring_logger, "~> 0.4"},
@@ -53,8 +54,7 @@ defmodule Heartbeat.MixProject do
     [
       {:nerves_runtime, "~> 0.4"},
       {:nerves_time, "~> 0.2"},
-      {:nerves_init_gadget, "~> 0.4"},
-      {:nerves_network, "~> 0.3.6"}
+      {:nerves_init_gadget, "~> 0.4"}
     ] ++ system(target)
   end
 
